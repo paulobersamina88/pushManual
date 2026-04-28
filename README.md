@@ -1,35 +1,30 @@
-# Manual RSA–Pushover Reconciliation Tool
+# RSA–Pushover Reconciliation Tool
 
-Offline Streamlit teaching app for simplified MDOF shear-building pushover analysis.
+Online Streamlit version for simplified manual MDOF pushover and RSA/base shear comparison.
 
-## How to run offline
+## Deploy to Streamlit Community Cloud
 
-1. Install Python 3.10 or newer.
-2. Open terminal inside this folder.
-3. Install requirements:
+1. Create a GitHub repository.
+2. Upload these files:
+   - app.py
+   - requirements.txt
+3. Go to Streamlit Community Cloud.
+4. Click "New app".
+5. Select your GitHub repository.
+6. Main file path: app.py
+7. Click Deploy.
+
+## Local test
 
 ```bash
 pip install -r requirements.txt
-```
-
-4. Run:
-
-```bash
 streamlit run app.py
 ```
 
-## What it does
+## Important modeling note
 
-- Uses floor weights and storey stiffness extracted from STAAD.
-- Computes modal properties and first-mode pushover force pattern.
-- Estimates yield capacity per storey from beam and column plastic moments.
-- Generates a simplified bilinear MDOF pushover curve.
-- Compares static or dynamic base shear demand against first yield.
-
-## Important modeling reminder
-
-Use a consistent basis:
+Use consistent basis:
 
 Mass basis = stiffness basis = plastic moment/yield capacity basis.
 
-If STAAD mass and stiffness represent 3 frames in one axis, plastic moment capacity must also represent the same 3 frames, or use the app's frame multiplier.
+If your STAAD floor mass and storey stiffness represent 3 frames in one axis, then the plastic moment capacity must also represent those 3 frames, or use the frame multiplier.
